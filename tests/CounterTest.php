@@ -8,237 +8,240 @@ require_once dirname(__FILE__) . '/../src/Counter.php';
  */
 class CounterTest extends PHPUnit_Framework_TestCase
 {
-	public function testCounterConstructorWithNoArgs()
-	{
-		$counter = new Counter();
+    public function testCounterConstructorWithNoArgs()
+    {
+        $counter = new Counter();
 
-		$this->assertEquals(0, $counter['a']);
-		$this->assertEquals(0, $counter['b']);
-		$this->assertEquals(0, $counter['c']);
+        $this->assertEquals(0, $counter['a']);
+        $this->assertEquals(0, $counter['b']);
+        $this->assertEquals(0, $counter['c']);
 
-		$array = $counter->getArray();
-		$this->assertEquals(array(), $array);
+        $array = $counter->getArray();
+        $this->assertEquals(array(), $array);
 
-		return $counter;
-	}
+        return $counter;
+    }
 
-	public function testCounterConstructorWithArray()
-	{
-		$counter = new Counter(array('a' => 1, 'b' => 1));
+    public function testCounterConstructorWithArray()
+    {
+        $counter = new Counter(array('a' => 1, 'b' => 1));
 
-		$this->assertEquals(1, $counter['a']);
-		$this->assertEquals(1, $counter['b']);
-		$this->assertEquals(0, $counter['c']);
+        $this->assertEquals(1, $counter['a']);
+        $this->assertEquals(1, $counter['b']);
+        $this->assertEquals(0, $counter['c']);
 
-		$array = $counter->getArray();
-		$this->assertEquals(array('a' => 1, 'b' => 1), $array);
+        $array = $counter->getArray();
+        $this->assertEquals(array('a' => 1, 'b' => 1), $array);
 
-		return $counter;
-	}
+        return $counter;
+    }
 
-	public function testCounterConstructorWithArray2()
-	{
-		$counter = new Counter(array('red' => 4, 'blue' => 2));
+    public function testCounterConstructorWithArray2()
+    {
+        $counter = new Counter(array('red' => 4, 'blue' => 2));
 
-		$this->assertEquals(4, $counter['red']);
-		$this->assertEquals(2, $counter['blue']);
-	}
+        $this->assertEquals(4, $counter['red']);
+        $this->assertEquals(2, $counter['blue']);
+    }
 
-	public function testCounterConstructorWithArray3()
-	{
-		$counter = new Counter(array('eggs', 'ham'));
+    public function testCounterConstructorWithArray3()
+    {
+        $counter = new Counter(array('eggs', 'ham'));
 
-		$this->assertEquals(1, $counter['eggs']);
-		$this->assertEquals(1, $counter['ham']);
-	}
+        $this->assertEquals(1, $counter['eggs']);
+        $this->assertEquals(1, $counter['ham']);
+    }
 
-	public function testCounterConstructorWithArray4()
-	{
-		$counter = new Counter(array('eggs', 'ham', 'eggs', 'ham', 'ham'));
+    public function testCounterConstructorWithArray4()
+    {
+        $counter = new Counter(array('eggs', 'ham', 'eggs', 'ham', 'ham'));
 
-		$this->assertEquals(2, $counter['eggs']);
-		$this->assertEquals(3, $counter['ham']);
-	}
+        $this->assertEquals(2, $counter['eggs']);
+        $this->assertEquals(3, $counter['ham']);
+    }
 
-	public function testCounterConstructorWithString()
-	{
-		$counter = new Counter('gallahad');
+    public function testCounterConstructorWithString()
+    {
+        $counter = new Counter('gallahad');
 
-		$this->assertEquals(1, $counter['g']);
-		$this->assertEquals(3, $counter['a']);
-		$this->assertEquals(2, $counter['l']);
-		$this->assertEquals(1, $counter['h']);
-		$this->assertEquals(1, $counter['d']);
-	}
+        $this->assertEquals(1, $counter['g']);
+        $this->assertEquals(3, $counter['a']);
+        $this->assertEquals(2, $counter['l']);
+        $this->assertEquals(1, $counter['h']);
+        $this->assertEquals(1, $counter['d']);
+    }
 
-	/**
-	 * @depends testCounterConstructorWithNoArgs
-	 */
-	public function testIncrement($counter)
-	{
-		$this->assertEquals(0, $counter['a']);
-		$counter['a'] += 1;
-		$this->assertEquals(1, $counter['a']);
-		$counter['a'] += 1;
-		$this->assertEquals(2, $counter['a']);
-		$counter['a'] += 1;
-		$this->assertEquals(3, $counter['a']);
-		$counter['a'] += 1;
-		$this->assertEquals(4, $counter['a']);
-		$counter['a'] += 1;
-		$this->assertEquals(5, $counter['a']);
+    /**
+     * @depends testCounterConstructorWithNoArgs
+     */
+    public function testIncrement($counter)
+    {
+        $this->assertEquals(0, $counter['a']);
+        $counter['a'] += 1;
+        $this->assertEquals(1, $counter['a']);
+        $counter['a'] += 1;
+        $this->assertEquals(2, $counter['a']);
+        $counter['a'] += 1;
+        $this->assertEquals(3, $counter['a']);
+        $counter['a'] += 1;
+        $this->assertEquals(4, $counter['a']);
+        $counter['a'] += 1;
+        $this->assertEquals(5, $counter['a']);
 
-		$this->assertEquals(0, $counter['b']);
-		$counter['b'] += 1;
-		$this->assertEquals(1, $counter['b']);
-		$counter['b'] += 1;
-		$this->assertEquals(2, $counter['b']);
+        $this->assertEquals(0, $counter['b']);
+        $counter['b'] += 1;
+        $this->assertEquals(1, $counter['b']);
+        $counter['b'] += 1;
+        $this->assertEquals(2, $counter['b']);
 
-		$this->assertEquals(0, $counter['c']);
-		$counter['c'] += 1;
-		$this->assertEquals(1, $counter['c']);
+        $this->assertEquals(0, $counter['c']);
+        $counter['c'] += 1;
+        $this->assertEquals(1, $counter['c']);
 
-		$this->assertEquals(0, $counter['d']);
-		$counter['d'] += 1;
-		$this->assertEquals(1, $counter['d']);
-		$counter['d'] += 1;
-		$this->assertEquals(2, $counter['d']);
-		$counter['d'] += 1;
-		$this->assertEquals(3, $counter['d']);
-		$counter['d'] += 1;
-		$this->assertEquals(4, $counter['d']);
+        $this->assertEquals(0, $counter['d']);
+        $counter['d'] += 1;
+        $this->assertEquals(1, $counter['d']);
+        $counter['d'] += 1;
+        $this->assertEquals(2, $counter['d']);
+        $counter['d'] += 1;
+        $this->assertEquals(3, $counter['d']);
+        $counter['d'] += 1;
+        $this->assertEquals(4, $counter['d']);
 
-		$this->assertEquals(0, $counter['f']);
-		$counter['f'] += 1;
-		$this->assertEquals(1, $counter['f']);
-		$counter['f'] += 1;
-		$this->assertEquals(2, $counter['f']);
-		$counter['f'] += 1;
-		$this->assertEquals(3, $counter['f']);
+        $this->assertEquals(0, $counter['f']);
+        $counter['f'] += 1;
+        $this->assertEquals(1, $counter['f']);
+        $counter['f'] += 1;
+        $this->assertEquals(2, $counter['f']);
+        $counter['f'] += 1;
+        $this->assertEquals(3, $counter['f']);
 
-		return $counter;
-	}
+        return $counter;
+    }
 
-	public function testIncrement2()
-	{
-		$counter = new Counter();
+    public function testIncrement2()
+    {
+        $counter = new Counter();
 
-		foreach (array('red', 'blue', 'red', 'green', 'blue', 'blue') as $word)
-		{
-			$counter[$word] += 1;
-		}
+        foreach (array('red', 'blue', 'red', 'green', 'blue', 'blue') as $word)
+        {
+            $counter[$word] += 1;
+        }
 
-		$this->assertEquals(3, $counter['blue']);
-		$this->assertEquals(2, $counter['red']);
-		$this->assertEquals(1, $counter['green']);
-	}
+        $this->assertEquals(3, $counter['blue']);
+        $this->assertEquals(2, $counter['red']);
+        $this->assertEquals(1, $counter['green']);
+    }
 
-	/*
-	public function testHamlet()
-	{
-		$counter = new Counter();
+    /*
+    public function testHamlet()
+    {
+        $counter = new Counter();
 
-		$text = file_get_contents(dirname(__FILE__) . '/hamlet.txt');
-		$words = preg_split("/[\s,]+/", $text);
-		$words = array_map('strtolower', $words);
+        $text = file_get_contents(dirname(__FILE__) . '/hamlet.txt');
+        $words = preg_split("/[\s,]+/", $text);
+        $words = array_map('strtolower', $words);
 
-		foreach ($words as $word)
-		{
-			$counter[$word] += 1;
-		}
+        foreach ($words as $word)
+        {
+            $counter[$word] += 1;
+        }
 
-		$mostCommon = $counter->mostCommon(3);
-		$this->assertInternalType('array', $mostCommon);
-		$this->assertEquals(
-			array(
-				array('the', 1101),
-				array('and', 912),
-				array('to', 752),
-		  ),
-			$mostCommon
-		);
-	}
-	 */
+        $mostCommon = $counter->mostCommon(3);
+        $this->assertInternalType('array', $mostCommon);
+        $this->assertEquals(
+            array(
+                array('the', 1101),
+                array('and', 912),
+                array('to', 752),
+            ),
+            $mostCommon
+        );
+    }
+     */
 
-	/**
-	 * @depends testIncrement
-	 */
-	public function testGetArray($counter)
-	{
-		$array = $counter->getArray();
-		$this->assertEquals(array('a' => 5, 'b' => 2, 'c' => 1, 'd' => 4, 'f' => 3), $array);
-	}
+    /**
+     * @depends testIncrement
+     */
+    public function testGetArray($counter)
+    {
+        $array = $counter->getArray();
+        $this->assertEquals(array('a' => 5, 'b' => 2, 'c' => 1, 'd' => 4, 'f' => 3), $array);
+    }
 
-	/**
-	 * @depends testIncrement
-	 */
-	public function testMostCommon($counter)
-	{
-		$mostCommon = $counter->mostCommon(3);
-		$this->assertEquals(
-			array(
-				array('a', 5),
-				array('d', 4),
-				array('f', 3),
-		  ),
-			$mostCommon
-		);
+    /**
+     * @depends testIncrement
+     */
+    public function testMostCommon($counter)
+    {
+        $mostCommon = $counter->mostCommon(3);
+        $this->assertEquals(
+            array(
+                array('a', 5),
+                array('d', 4),
+                array('f', 3),
+            ),
+            $mostCommon
+        );
 
-		$mostCommon = $counter->mostCommon(2);
-		$this->assertEquals(
-			array(
-				array('a', 5),
-				array('d', 4),
-		  ),
-			$mostCommon
-		);
+        $mostCommon = $counter->mostCommon(2);
+        $this->assertEquals(
+            array(
+                array('a', 5),
+                array('d', 4),
+            ),
+            $mostCommon
+        );
 
-		$mostCommon = $counter->mostCommon(1);
-		$this->assertEquals(
-			array(
-				array('a', 5),
-		  ),
-			$mostCommon
-		);
-	}
+        $mostCommon = $counter->mostCommon(1);
+        $this->assertEquals(
+            array(
+                array('a', 5),
+            ),
+            $mostCommon
+        );
+    }
 
-	public function testUnset()
-	{
-		$counter = new Counter('gallahad');
-		$this->assertEquals(2, $counter['l']);
+    public function testUnset()
+    {
+        $counter = new Counter('gallahad');
+        $this->assertEquals(2, $counter['l']);
 
-		$counter['l'] = 0;
-		$this->assertEquals(array('g' => 1, 'a' => 3, 'l' => 0, 'h' => 1, 'd' => 1), $counter->getArray());
+        $counter['l'] = 0;
+        $this->assertEquals(array('g' => 1, 'a' => 3, 'l' => 0, 'h' => 1, 'd' => 1), $counter->getArray());
 
-		unset($counter['l']);
-		$this->assertEquals(array('g' => 1, 'a' => 3, 'h' => 1, 'd' => 1), $counter->getArray());
+        unset($counter['l']);
+        $this->assertEquals(array('g' => 1, 'a' => 3, 'h' => 1, 'd' => 1), $counter->getArray());
 
-	}
+    }
 
-	public function testMissingElement()
-	{
-		$counter = new Counter(array('eggs', 'ham'));
-		$this->assertEquals(0, $counter['bacon']);
-	}
+    public function testMissingElement()
+    {
+        $counter = new Counter(array('eggs', 'ham'));
+        $this->assertEquals(0, $counter['bacon']);
+    }
 
-	public function testElementsMethod()
-	{
-		$counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
-		$this->assertEquals(array('a', 'a', 'a', 'a', 'b', 'b'), $counter->elements());
-	}
+    public function testElementsMethod()
+    {
+        $counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
+        $this->assertEquals(array('a', 'a', 'a', 'a', 'b', 'b'), $counter->elements());
+    }
 
-	public function testUpdate()
-	{
-		$counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
-		$counter->update(array('a' => 3, 'b' => 4, 'c' => 2, 'd' => 3));
-		$this->assertEquals(array('a' => 7, 'b' => 6, 'c' => 2, 'd' => 1), $counter->getArray());
-	}
+    public function testUpdate()
+    {
+        $counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
+        $counter->update(array('a' => 3, 'b' => 4, 'c' => 2, 'd' => 3));
+        $this->assertEquals(array('a' => 7, 'b' => 6, 'c' => 2, 'd' => 1), $counter->getArray());
+    }
 
-	public function testSubtract()
-	{
-		$counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
-		$counter->subtract(array('a' => 3, 'b' => 4, 'c' => 2, 'd' => 3));
-		$this->assertEquals(array('a' => 1, 'b' => -2, 'c' => -2, 'd' => -5), $counter->getArray());
-	}
+    public function testSubtract()
+    {
+        $counter = new Counter(array('a' => 4, 'b' => 2, 'c' => 0, 'd' => -2));
+        $counter->subtract(array('a' => 3, 'b' => 4, 'c' => 2, 'd' => 3));
+        $this->assertEquals(array('a' => 1, 'b' => -2, 'c' => -2, 'd' => -5), $counter->getArray());
+    }
 
 } // class CounterTest
+
+// vim: expandtab:noai:ts=4:sw=4
+
