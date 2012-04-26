@@ -11,9 +11,14 @@ A PHP port of Python's [collections.Counter class](http://docs.python.org/librar
 [Marc Abramowitz](http://marc-abramowitz.com/)
 
 
+## Build status
+
+[![Build Status](https://secure.travis-ci.org/msabramo/PHP_Counter.png?branch=master)](http://travis-ci.org/msabramo/PHP_Counter)
+
+
 ## Examples
 
-```
+```php
 $counter = new Counter();
 $counter['a'] += 1;
 $counter['b'] += 1;
