@@ -1,0 +1,21 @@
+{
+  "name": "phpcounter/phpcounter",
+  "description": "A PHP port of Python's collections.Counter class",
+  "keywords": ["counter","python"],
+  "homepage": "https://github.com/msabramo/PHP_Counter",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marc Abramowitz",
+      "email": "marc@marc-abramowitz.com",
+      "homepage": "http://marc-abramowitz.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.2.0"
+  },
+  "autoload": {
+    "classmap": [""]
+  }
+}
