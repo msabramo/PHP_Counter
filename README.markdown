@@ -19,7 +19,10 @@ A PHP port of Python's [collections.Counter class](http://docs.python.org/librar
 ## Examples
 
 ```php
+<?php
+
 $counter = new Counter();
+
 $counter['a'] += 1;
 $counter['b'] += 1;
 $counter['a'] += 1;
@@ -29,6 +32,7 @@ $counter['a'] += 1;
 $counter['a'];  // --> 3
 $counter['b'];  // --> 2
 $counter['c'];  // --> 1
+
 $counter->mostCommon(2);  // --> array('a' => 3, 'b' => 2)
 ```
 
